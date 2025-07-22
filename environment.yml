@@ -1,0 +1,16 @@
+name: finsight-ai
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - streamlit
+      - langchain
+      - chromadb
+      - sentence-transformers
+      - pymupdf
+      - python-dotenv
+      - tiktoken
+      - ollama
