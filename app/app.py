@@ -5,7 +5,7 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from backend.core.pdf_parser import extract_text_from_pdf
-
+from backend.core.chunker import chunk_text
 
 # Load environment variables
 load_dotenv()
@@ -29,6 +29,13 @@ if uploaded_file:
     
     # Show sample preview
     if full_text:
+
+        st.write(f"📄 Extracted from {page_count} pages.")
+
+        # Step 3: Chunk the extracted text
+        chunks = chunk_text(full_text)
+        st.write(f"🧩 Created {len(chunks)} text chunks.")
+
         st.subheader("📄 Preview of Extracted Text")
         st.text(full_text[:1000])  # show first 1000 characters
         st.success(f"Extracted {page_count} pages successfully.")
