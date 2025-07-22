@@ -1,0 +1,8 @@
+streamlit 
+langchain 
+chromadb 
+sentence-transformers 
+pymupdf 
+python-dotenv 
+tiktoken 
+ollama
