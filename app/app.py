@@ -6,6 +6,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from backend.core.pdf_parser import extract_text_from_pdf
 from backend.core.chunker import chunk_text
+from backend.core.embedder import embed_and_store
 
 # Load environment variables
 load_dotenv()
@@ -35,6 +36,11 @@ if uploaded_file:
         # Step 3: Chunk the extracted text
         chunks = chunk_text(full_text)
         st.write(f"🧩 Created {len(chunks)} text chunks.")
+
+
+        with st.spinner("🔄 Embedding chunks and storing in ChromaDB..."):
+            vectordb = embed_and_store(chunks, uploaded_file.name)
+            st.success("✅ Chunks embedded and stored in vector database.")
 
         st.subheader("📄 Preview of Extracted Text")
         st.text(full_text[:1000])  # show first 1000 characters
