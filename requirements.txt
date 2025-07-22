@@ -6,3 +6,4 @@ pymupdf
 python-dotenv 
 tiktoken 
 ollama
+pdfplumber
